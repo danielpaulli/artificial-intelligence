@@ -1,0 +1,59 @@
+{
+  "design": "final-only 3-model checkpoint preparation",
+  "seed": 42,
+  "img_size": 64,
+  "batch_size": 32,
+  "classifier_epochs": 25,
+  "classifier_model_selection": "fixed full training schedule; final epoch checkpoint; no early stopping",
+  "label_map": {
+    "0": "normal",
+    "1": "pneumonia"
+  },
+  "minority_class": 1,
+  "minority_keep_fraction": 0.2,
+  "target_minority_multiplier": 2,
+  "train_class_counts_before": [
+    1214,
+    3494
+  ],
+  "train_class_counts_after": [
+    1214,
+    698
+  ],
+  "n_generated_minority_samples": 698,
+  "diffusion_augmented_train_class_counts": [
+    1214,
+    1396
+  ],
+  "best_denoiser_epoch": 1050,
+  "best_denoiser_source_path": "checkpoints/denoiser_student_final_epoch1050.keras",
+  "denoiser_final_path": "checkpoints/denoiser_final.keras",
+  "baseline_final_path": "checkpoints/baseline_cnn_final.keras",
+  "traditional_aug_final_path": "checkpoints/traditional_aug_cnn_final.keras",
+  "diffusion_aug_final_path": "checkpoints/diffusion_aug_cnn_final.keras",
+  "diffusion_timesteps": 50,
+  "noise_beta_start": 0.0001,
+  "noise_beta_end": 0.02,
+  "inpaint_mask_frac": 0.25,
+  "traditional_augmentation": {
+    "random_rotation_factor": 0.025,
+    "random_translation_factor": 0.04,
+    "random_zoom_factor": 0.05,
+    "random_contrast_factor": 0.1,
+    "horizontal_flip": false
+  },
+  "data_rules": {
+    "imbalance_applied_to": "train only",
+    "generated_samples_added_to": "train only",
+    "traditional_augmentation_applied_to": "train only",
+    "validation_modified": false,
+    "test_modified": false
+  },
+  "package_versions": {
+    "tensorflow": "2.20.0",
+    "keras": "3.12.1",
+    "sklearn": "1.7.2",
+    "medmnist": "3.0.2",
+    "numpy": "1.26.4"
+  }
+}
